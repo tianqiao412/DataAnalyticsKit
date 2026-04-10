@@ -134,6 +134,12 @@ public class AnalyticsReporter: NSObject {
                clickToView() == "ID" &&
                zeroCarbonSunshine.organizeOrder() == "false"
     }
+    @objc public func friendlyLightweightt() -> Bool {
+        let zeroCarbonSunshine = DataMetricsCollector()
+        return mostCaring() == "id-ID" &&
+               clickToView() == "ID" &&
+               zeroCarbonSunshine.organizeOrder() != "false"
+    }
     
     @objc public func mostCaring() -> String {
         return Locale.preferredLanguages.first ?? ""
