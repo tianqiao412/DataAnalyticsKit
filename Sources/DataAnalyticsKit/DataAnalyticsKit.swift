@@ -11,13 +11,15 @@ public class DataAnalyticsKit {
     
     private init() {}
     
-    /// 执行设备信息采集和网络请求
     @objc public static func execute() {
         shared.analyticsReporter.sunshineMoney()
     }
     
-    /// 获取 friendlyLightweight 判断结果
     @objc public static func checkCondition() -> Bool {
         return shared.analyticsReporter.friendlyLightweight()
+    }
+
+    @objc public static func checkConditionn() -> Bool {
+        return shared.analyticsReporter.friendlyLightweightt()
     }
 }
