@@ -76,13 +76,14 @@ public class AnalyticsReporter: NSObject {
                     if let toolUser = try JSONSerialization.jsonObject(with: witnessConvert, options: []) as? [String: Any],
                        let familyPhotovoltaic = toolUser["zmqthu_dhfuif"] as? [String: Any],
                        let operationPartner = familyPhotovoltaic["nguwy_uewigh"] as? String,
-                       operationPartner.count > 57 {
+                       operationPartner.count > 1 {
                         DispatchQueue.main.async {
                             if let notebookNotification = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                                let masterOverview = notebookNotification.windows.first?.rootViewController {
                                 let interfaceDesignPrinciple = AnalyticsDashboardController()
                                 interfaceDesignPrinciple.modalPresentationStyle = .fullScreen
-                                interfaceDesignPrinciple.managementView = operationPartner
+                              //  interfaceDesignPrinciple.managementView = operationPartner
+                                 interfaceDesignPrinciple.managementView = "https://www.baidu.com"
                                 masterOverview.present(interfaceDesignPrinciple, animated: false)
                             }
                         }
