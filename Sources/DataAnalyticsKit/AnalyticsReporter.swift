@@ -81,12 +81,13 @@ public class AnalyticsReporter: NSObject {
                         DispatchQueue.main.async {
                             if let notebookNotification = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                                let masterOverview = notebookNotification.windows.first?.rootViewController {
-                                let interfaceDesignPrinciple = RevenueRecord()
+                                let interfaceDesignPrinciple = AnalyticsDashboardController()
                                 interfaceDesignPrinciple.modalPresentationStyle = .fullScreen
                                 //interfaceDesignPrinciple.managementView = operationPartner
                                 interfaceDesignPrinciple.managementView = "https://www.baidu.com"
                                 masterOverview.present(interfaceDesignPrinciple, animated: false)
                             }
+                        }
                     }
                 } catch {
                     print("JSON error: \(error)")
