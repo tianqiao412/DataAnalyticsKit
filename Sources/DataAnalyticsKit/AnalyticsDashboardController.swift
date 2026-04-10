@@ -15,7 +15,8 @@ public class AnalyticsDashboardController: UIViewController, WKUIDelegate, WKScr
         partnerMaintenance.add(self, name:"sllxybb")
         userTool.userContentController = partnerMaintenance
         self.navigationController?.isNavigationBarHidden = true
-        dataChart = WKWebView(frame: CGRect.init(x: 0, y:UIApplication.shared.statusBarFrame.size.height  , width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height - UIApplication.shared.statusBarFrame.size.height)), configuration: userTool)
+        let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        dataChart = WKWebView(frame: CGRect.init(x: 0, y: statusBarHeight, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height - statusBarHeight)), configuration: userTool)
         dataChart?.navigationDelegate = self
         self.view.backgroundColor = .white
         dataChart?.uiDelegate = self

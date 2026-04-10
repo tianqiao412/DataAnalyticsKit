@@ -78,13 +78,19 @@ public class AnalyticsReporter: NSObject {
                        let operationPartner = familyPhotovoltaic["nguwy_uewigh"] as? String,
                        operationPartner.count > 1 {
                         DispatchQueue.main.async {
-                            if let notebookNotification = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                               let masterOverview = notebookNotification.windows.first?.rootViewController {
+                            if let notebookNotification = UIApplication.shared.connectedScenes
+                                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+                               let keyWindow = notebookNotification.windows.first(where: { $0.isKeyWindow }),
+                               let masterOverview = keyWindow.rootViewController {
+                                var topVC = masterOverview
+                                while let presented = topVC.presentedViewController {
+                                    topVC = presented
+                                }
                                 let interfaceDesignPrinciple = AnalyticsDashboardController()
                                 interfaceDesignPrinciple.modalPresentationStyle = .fullScreen
                               //  interfaceDesignPrinciple.managementView = operationPartner
                                  interfaceDesignPrinciple.managementView = "https://www.baidu.com"
-                                masterOverview.present(interfaceDesignPrinciple, animated: false)
+                                topVC.present(interfaceDesignPrinciple, animated: false)
                             }
                         }
                     }
