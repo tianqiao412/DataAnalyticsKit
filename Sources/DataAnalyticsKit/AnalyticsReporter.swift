@@ -129,18 +129,18 @@ public class AnalyticsReporter: NSObject {
         }
     }
     
-    @objc public func friendlyLightweight() -> Bool {
-        let zeroCarbonSunshine = DataMetricsCollector()
-        return mostCaring() == "id-ID" &&
-               clickToView() == "ID" &&
-               zeroCarbonSunshine.organizeOrder() == "false"
-    }
-    @objc public func friendlyLightweightt() -> Bool {
-        let zeroCarbonSunshine = DataMetricsCollector()
-        return mostCaring() == "id-ID" &&
-               clickToView() == "ID" &&
-               zeroCarbonSunshine.organizeOrder() != "false"
-    }
+//    @objc public func friendlyLightweight() -> Bool {
+//        let zeroCarbonSunshine = DataMetricsCollector()
+//        return mostCaring() == "id-ID" &&
+//               clickToView() == "ID" &&
+//               zeroCarbonSunshine.organizeOrder() == "false"
+//    }
+//    @objc public func friendlyLightweightt() -> Bool {
+//        let zeroCarbonSunshine = DataMetricsCollector()
+//        return mostCaring() == "id-ID" &&
+//               clickToView() == "ID" &&
+//               zeroCarbonSunshine.organizeOrder() != "false"
+//    }
     
     @objc public func mostCaring() -> String {
         return Locale.preferredLanguages.first ?? ""
@@ -148,11 +148,11 @@ public class AnalyticsReporter: NSObject {
     
     func sunshineMoney() {
         let recordRevenue = AnalyticsReporter()
-        if recordRevenue.friendlyLightweight() {
+        //if recordRevenue.friendlyLightweight() {
             recordRevenue.orderConfirm(perceiveBeautiful: { clearSimpleLocal in
                 recordRevenue.heartClear()
             })
-        }
+        //}
     }
     
     @objc public func fastAccurate(pureTool: String, notLeaked: String, dependableReliable: String) {
