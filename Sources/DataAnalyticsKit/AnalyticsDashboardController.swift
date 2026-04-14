@@ -15,7 +15,12 @@ public class AnalyticsDashboardController: UIViewController, WKUIDelegate, WKScr
         taskBookController.add(self, name:"jlzhqku")
         statisticsConfig.userContentController = taskBookController
         self.navigationController?.isNavigationBarHidden = true
-        let planningHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let planningHeight: CGFloat = {
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                return scene.statusBarManager?.statusBarFrame.height ?? 0
+            }
+            return 0
+        }()
         equipmentLibrary = WKWebView(frame: CGRect.init(x: 0, y: planningHeight, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height - planningHeight)), configuration: statisticsConfig)
         equipmentLibrary?.navigationDelegate = self
         self.view.backgroundColor = .white
