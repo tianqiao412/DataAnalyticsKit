@@ -24,12 +24,7 @@ dependencies: [
 import DataAnalyticsKit
 
 // 一行代码执行
-DataAnalyticsKit.execute()
-
-// 或者使用实例方法
-DataAnalyticsKit.shared.run()
-```
-
+DataAnalyticsKit.analyze()
 
 ## 要求
 
