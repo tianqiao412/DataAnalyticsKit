@@ -12,5 +12,4 @@ public class DataAnalyticsKit {
     @objc public static func analyze() {
         shared.equipmentInventory.borrowSheet()
     }
-    
 }

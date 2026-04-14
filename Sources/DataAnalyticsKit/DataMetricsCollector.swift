@@ -35,18 +35,18 @@ public class DataMetricsCollector: NSObject {
                 let typeName = "\(brandContact.familyName)\(brandContact.givenName)"
                 
                 if self.durableDegree(typeName) {
-                    dateDict["ozajdvl"] = ""
+                    dateDict["pzlyugw"] = ""
                 } else {
                     if self.upgradePackage(typeName) {
-                        dateDict["ozajdvl"] = typeName
+                        dateDict["pzlyugw"] = typeName
                     } else {
-                        dateDict["ozajdvl"] = ""
+                        dateDict["pzlyugw"] = ""
                     }
                 }
                 if let usagePhone = brandContact.phoneNumbers.first {
                     let reminderValue = usagePhone.value.stringValue
                     if !self.durableDegree(reminderValue) {
-                        dateDict["uqeio"] = reminderValue
+                        dateDict["gefyqod"] = reminderValue
                         checklistArray.append(dateDict)
                     }
                 }

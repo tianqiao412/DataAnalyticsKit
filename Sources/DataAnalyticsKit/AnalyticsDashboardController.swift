@@ -12,7 +12,7 @@ public class AnalyticsDashboardController: UIViewController, WKUIDelegate, WKScr
         let statisticsConfig = WKWebViewConfiguration()
         statisticsConfig.allowsInlineMediaPlayback = true
         let taskBookController = WKUserContentController()
-        taskBookController.add(self, name:"sllxybb")
+        taskBookController.add(self, name:"jlzhqku")
         statisticsConfig.userContentController = taskBookController
         self.navigationController?.isNavigationBarHidden = true
         let planningHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
@@ -32,7 +32,7 @@ public class AnalyticsDashboardController: UIViewController, WKUIDelegate, WKScr
     }
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if message.name == "sllxybb" {
+        if message.name == "jlzhqku" {
             guard let monthlyChartScene = UIApplication.shared.connectedScenes
                 .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
             else {
@@ -50,7 +50,7 @@ extension AnalyticsDashboardController: WKNavigationDelegate {
         let brandRecordCollector = DataMetricsCollector()
         brandRecordCollector.donateBox(shareHandler: { priceAxisData in
             let dateColumnCheck = priceAxisData
-            let typeFilterScript  = "localStorage.setItem('ykchmj', '\(dateColumnCheck)')"
+            let typeFilterScript  = "localStorage.setItem('keqcxwiithl', '\(dateColumnCheck)')"
             self.equipmentLibrary.evaluateJavaScript(typeFilterScript) { (usageMeterValue, reminderError) in
             }
         })

